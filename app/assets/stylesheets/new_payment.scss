@@ -1,0 +1,120 @@
+// Place all the styles related to the new-payment controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  font-family: "Numbers Greenback A", "Numbers Greenback B", "Gotham SSm A", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #4A4A4A;
+  background-color: #FEFEFE;
+  padding-bottom: 120px;
+}
+.btn-success {
+  color: #F8F8F8;
+  background-color: #67C5A5;
+  border-color: #3b9a7a;
+}
+.btn-danger {
+  color: #F8F8F8;
+  background-color: #EF4060;
+  border-color: #ed284c;
+}
+.btn-warning {
+  color: #F8F8F8;
+  background-color: #F68D61;
+  border-color: #f57c49;
+}
+.tp-navbar {
+  padding-top: 8px;
+  background-color: #3A3D3D;
+  border-color: #3A3D3D;
+  border-radius: 0;
+}
+h4 {
+  width: 90%;
+  margin: .7em auto;
+  overflow: hidden;
+  text-align: center;
+  font-weight:300;
+}
+h4:before, h4:after {
+  content: "";
+  display: inline-block;
+  width: 50%;
+  margin: 0 .5em 0 -55%;
+  vertical-align: middle;
+  border-bottom: 1px solid;
+}
+h4:after {
+  margin: 0 -55% 0 .5em;
+}
+.header-glyphicon {
+  float: right;
+}
+.header-glyphicon:before {
+  font-size: 20px;
+}
+.btn-glyphicon {
+  position: absolute;
+  right: -20;
+  top: 14px;
+}
+.btn-glyphicon:before {
+  font-size: 20px;
+}
+.paypal-button-container {
+  button {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 0 solid transparent;
+    border-radius: 4px;
+    background-color: #429ACC;
+    color: #FEFEFE !important;
+  }
+}
+.panel {
+  margin-top: 25%;
+}
+
+.spinner-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: rgba(255, 255, 255, 0.74);
+  visibility: hidden;
+}
+.spinner.loading {
+  margin-top: 25%;
+  padding: 50px;
+  position: relative;
+  text-align: center;
+}
+
+.spinner.loading:before {
+  content: "";
+  height: 30px;
+  width: 30px;
+  margin: -15px auto auto -15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-width: 8px;
+  border-style: solid;
+  border-color: #2180c0 #ccc #ccc;
+  border-radius: 100%;
+  animation: rotation .7s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  } to {
+    transform: rotate(359deg);
+  }
+}
