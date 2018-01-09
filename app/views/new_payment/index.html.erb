@@ -27,33 +27,16 @@
             </div>
           </div>
 
-          <br>
-
           <div class="row">
             <div class="col-xs-12">
               <div class="form-group">
-                <label>Card Number</label>
-                <input type="number" id="card-number" class="form-control" placeholder="4111 1111 1111 1111">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                <label>CVV</label>
-                <input id="cvv" class="form-control" placeholder="222" maxlength="4">
-              </div>
-            </div>
-
-            <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                <label>Expiry</label>
-                <input id="expiry" class="form-control" placeholder="06/22" maxlength="7">
+                <label>Amount to pay</label>
+                <input type="number" id="amount" class="form-control" value="77.00">
               </div>
             </div>
           </div>
 
-          <br>
+          <hr>
 
           <div class="row">
             <div class="col-xs-12">
@@ -69,24 +52,25 @@
 </div>
 
 <script>
-  var expiry = document.getElementById('expiry');
-
-  expiry.addEventListener('input', function(t) {
-    if (t.target.value.length === 3) {
-      t.target.value = t.target.value.slice(0, -1);
-    } else if (t.target.value.length === 2) {
-      t.target.value = t.target.value.concat('/');
-    }
-  })
-
   paypal.Button.render({
     env: 'sandbox', // sandbox | production
 
+    // TESTING PAYS
     client: {
-      local:    'b51747823194a40a27e791743b281142',
-      sandbox:    'b51747823194a40a27e791743b281142',
+      local:    'c6e23baf70bffc833190cc7cae5fbc5e',
+      sandbox:    'c6e23baf70bffc833190cc7cae5fbc5e',
       production: '<insert production client id>'
     },
+
+    /*
+    // PayPal
+
+    client: {
+      local:      'AciFGeYc1G5VylFQWLbejmJ3DxxajAiVVPBScYQe7MvytI79-uMyTnL0-Hb_Mlba9ZHH6CzUXsYqcMNR',
+      sandbox:    'AciFGeYc1G5VylFQWLbejmJ3DxxajAiVVPBScYQe7MvytI79-uMyTnL0-Hb_Mlba9ZHH6CzUXsYqcMNR',
+      production: '<insert production client id>'
+    },
+    */
 
     // Show the buyer a 'Pay Now' button in the checkout flow
     commit: true,
@@ -98,19 +82,9 @@
       // Here you can add your shipping details, transaction details, etc.
       return actions.payment.create({
         payment: {
-          payer: {
-            funding_instruments: [{
-              credit_card: {
-                number: document.getElementById('card-number').value,
-                cv2: document.getElementById('cvv').value,
-                expiry_month: document.getElementById('expiry').value.split('/')[0],
-                expiry_year: document.getElementById('expiry').value.split('/').pop()
-              }
-            }]
-          },
           transactions: [
             {
-              amount: { total: '0.01', currency: 'USD' },
+              amount: { total: document.getElementById('amount').value, currency: 'USD' }
             }
           ]
         }
